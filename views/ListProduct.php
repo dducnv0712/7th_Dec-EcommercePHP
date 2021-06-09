@@ -6,6 +6,8 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Danh Sách Sản Phẩm</title>
+    <link href="../../7th_Decemb/views/css/ListProduct.css">
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
     <link href="../../7th_Decemb/views/libs/bootstrap-5.0.1-dist/css/bootstrap.min.css">
     <link href="../../7th_Decemb/views/libs/fontawesome5.15.1/css/all.min.css">
@@ -42,7 +44,7 @@
                 <tr >
                     <th  scope="row"><?php  echo   $num++; ?></th>
                     <td ><?php echo $item["id"];?></td>
-                    <td ><?php echo $item["name"];?></td>
+                    <td class="table-name"><?php echo $item["name"];?></td>
                     <td ><?php echo $item["category"];?></td>
                     <td ><?php echo number_format($item["price"],0,",",'.')." VNĐ"; ?></td>
                     <td >
@@ -80,7 +82,7 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                        <button onclick="window.location.href='deleteProduct.php?delete=<?php echo $item['id']?>'"  class="btn btn-danger">Xóa</button>
+                                        <button onclick="window.location.href='?route=deletePro&delete=<?php echo $item['id']?>'"  class="btn btn-danger">Xóa</button>
                                     </div>
                                 </div>
                             </div>
@@ -99,9 +101,9 @@
                                     </div>
                                     <div class="modal-body">
 
-                                        <form action="/" method="post"><!--UPDATE-->
+                                        <form action="?route=updatePro" method="post"><!--UPDATE-->
                                             <!--Thẻ input ẩn để lấy ID sửa sản phẩm -->
-                                            <input type="hidden" name='id_edit_m' class="form-control" value="<?php echo $item['id']?>"  >
+                                            <input type="hidden" name='id_edit_input' class="form-control" value="<?php echo $item['id']?>"  >
                                             <!----->
 
                                             <div class="mb-3">
@@ -142,7 +144,7 @@
 
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                <button type="submit"  onclick="window.location.href='editProduct.php?edit_pr=<?php echo $item['id']?>'" class="btn btn-primary">Sửa Sản Phẩm</button>
+                                                <button type="submit"  class="btn btn-primary">Sửa Sản Phẩm</button>
                                             </div>
                                         </form>
                                     </div>
@@ -151,12 +153,8 @@
                             </div>
                         </div>
                         <!--kết thúc form -->
-
-
                     </td>
-
                 </tr>
-
             <?php }?>
 
 

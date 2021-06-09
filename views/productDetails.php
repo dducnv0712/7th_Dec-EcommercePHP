@@ -12,6 +12,7 @@
 </head>
 <body>
 
+
 <div class="container-xl">
     <h2 class="mt-5">Chi Tiết Sản Phẩm</h2>
     <!--Section: Block Content-->
@@ -277,6 +278,7 @@
 
     <!--Section: Block Content-->
 </div>
+
 <script>
     $(document).ready(function () {
         // MDB Lightbox Init
@@ -293,5 +295,6 @@
 <script src="libs/bootstrap-5.0.1-dist/js/bootstrap.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap4.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
 </body>
 </html>

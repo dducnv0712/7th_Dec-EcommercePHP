@@ -13,12 +13,6 @@
 
 </head>
 <body>
-<?php
-$count = 0;
-if(isset($_SESSION['product_List'])){
-    $count= count($_SESSION['product_List']);
-}
-?>
 <div class="container h-100">
     <!--Section: Block Content-->
     <section>
@@ -26,40 +20,40 @@ if(isset($_SESSION['product_List'])){
         <!-- Grid row -->
         <div class="row">
             <?php  foreach ($list_product as $item) {?>
-            <!-- san pham -->
-            <div class="col-md-3 mt-5 ">
+                <!-- san pham -->
+                <div class="col-md-3 mt-5 ">
 
-                <!-- Card -->
-                <a class="card-items text-center"  href="?route=proDetails&details=<?php echo $item['id']?>">
-                    <div class="card rounded-3 " style="width: 18rem; float:left">
-                        <div class="img-card">
-                            <img src="<?php echo $item['images']; ?>" class="card-img-top" alt="...">
+                    <!-- Card -->
+                    <a class="card-items text-center"  href="?route=proDetails&details=<?php echo $item['id']?>">
+                        <div class="card rounded-3 " style="width: 18rem; float:left">
+                            <div class="img-card">
+                                <img src="<?php echo $item['images']; ?>" class="card-img-top" alt="...">
+                            </div>
+
+                            <div class="card-body">
+                                <h5 class="text-dark card-title"><?php echo $item['name']; ?></h5>
+                                <div class="text-dark"><?php echo number_format($item["price"],0,",",'.')." VNĐ"; ?></div>
+                                <div class="text-warning review-block-rate">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+
+                                </div>
+                                <div class="see-details bg-primary rounded-bottom">
+                                    <h6>Xem Chi Tiết</h6>
+                                </div>
+                                <div>
+                                </div>
+                            </div>
                         </div>
+                    </a>
 
-                        <div class="card-body">
-                            <h5 class="text-dark card-title"><?php echo $item['name']; ?></h5>
-                            <div class="text-dark"><?php echo number_format($item["price"],0,",",'.')." VNĐ"; ?></div>
-                            <div class="text-warning review-block-rate">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star-half-alt"></i>
+                    <!-- Card -->
 
-                            </div>
-                            <div class="see-details bg-primary rounded-bottom">
-                                <h6>Xem Chi Tiết</h6>
-                            </div>
-                            <div>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-
-                <!-- Card -->
-
-            </div>
-            <!-- san pham -->
+                </div>
+                <!-- san pham -->
             <?php }?>
 
 
@@ -85,3 +79,4 @@ if(isset($_SESSION['product_List'])){
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
 </body>
 </html>
+

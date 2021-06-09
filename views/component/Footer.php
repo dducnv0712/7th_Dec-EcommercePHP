@@ -17,13 +17,11 @@
     <!-- Footer -->
     <footer
             class="text-center mt-5 text-lg-start text-white"
-            style="background-color: #1c2331"
-    >
+            style="background-color: #1c2331">
         <!-- Section: Social media -->
         <section
-                class="d-flex justify-content-between p-4"
-                style="background-color: #6351ce"
-        >
+                class="d-flex bg-primary justify-content-between p-4"
+                style="background-color: #6351ce">
             <!-- Left -->
             <div class="me-5">
                 <span>Get connected with us on social networks:</span>

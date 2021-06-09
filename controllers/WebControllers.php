@@ -2,6 +2,11 @@
 include_once "Database_.php";
 class WebControllers{
     public function home(){
+        $sql_txt = "select * from list_product";
+        $list_product = queryDB($sql_txt);
+        include "views/component/Navbar.php";
+        include "views/Home.php";
+        include "views/component/Footer.php";
 
     }
 
@@ -9,19 +14,50 @@ class WebControllers{
         //lấy ra danh sách sản phẩm
         $sql_txt = "select * from list_product";
         $list_product = queryDB($sql_txt);
-        require_once "views/component/Navbar.php";
+        include "views/component/Navbar.php";
         include "views/ListProduct.php";
-        require_once "views/component/Footer.php";
+        include "views/component/Footer.php";
     }
     public function productDetails(){
         //chi tiết sản phẩm
         $id = $_GET['details'];
         $sql_txt = "select * from list_product where id= '$id'";
         $product= productDB($sql_txt);
-        require_once "views/component/Navbar.php";
+        include "views/component/Navbar.php";
         include "views/productDetails.php";
-        require_once "views/component/Footer.php";
+        include "views/categoryList.php";
+        include "views/component/Footer.php";
 
+
+    }
+    public function deleteProduct(){
+        $id = $_GET['delete'];
+        $sql_txt = "delete from list_product where id= '$id'";
+        if (updateDB($sql_txt)) {
+            header("location: ?route=listProduct");
+        } else{
+            echo "<script>alert('Xóa Thất Bại')</script>";
+
+        }
+
+
+    }
+    public function updateProduct(){
+        $id_input = $_POST['id_edit_input'];
+        $id = $_POST['id_edit'];
+        $name = $_POST['name_edit'];
+        $images = $_POST['images_edit'];
+        $category = $_POST['category_edit'];
+        $price = $_POST['price_edit'];
+        $describe = $_POST['describe_edit'];
+
+        $sql_txt = "UPDATE list_product SET id ='$id', name = '$name',images ='$images', category ='$category', describe_pr ='$describe', price ='$price' WHERE id='$id_input' ";
+
+        if(updateDB($sql_txt)){
+            header("Location: ?route=listProduct");
+        }else{
+            echo "Cap nhat that bai";
+        }
 
     }
     public function cartProduct(){
@@ -47,14 +83,15 @@ class WebControllers{
 
 
         public function cartListProduct(){
-
-        $cart_List = [];
+            session_start();
+            $cart_List = [];
         if($_SESSION["product_List"]){
             $cart_List = $_SESSION["product_List"];
         }
-            require_once "views/component/Navbar.php";
+            include "views/component/Navbar.php";
+            include "views/Home.php";
             include "views/cartListProduct.php";
-            require_once "views/component/Footer.php";
+            include "views/component/Footer.php";
 
 
         }
@@ -73,5 +110,11 @@ class WebControllers{
             header("location:?route=listProduct");
         } else {
             echo "<script>alert('Thêm thất bại')</script>";        }
+    }
+    public function categoryList(){
+        $sql_txt = "select * from list_product where category ='Laptop'";
+        $list_product = queryDB($sql_txt);
+        include "views/categoryList.php";
+
     }
 }

@@ -6,11 +6,18 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Danh Sách Sản Phẩm</title>
+    <link rel="stylesheet" href="../../7th_Decemb/views/css/cartListProduct.css">
     <link rel="stylesheet" href="../../7th_Decemb/views/libs/bootstrap-5.0.1-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="../../7th_Decemb/views/libs/fontawesome5.15.1/css/all.min.css">
 
 </head>
 <body>
+<?php
+$count = 0;
+if(isset($_SESSION['product_List'])){
+    $count= count($_SESSION['product_List']);
+}
+?>
 
 <div class="container">
 
@@ -28,8 +35,15 @@
                     <!-- Card -->
                     <div class="mb-3">
                         <div class="pt-4 wish-list">
+                            <?php
+                            $count = 0;
+                            if(isset($_SESSION['product_List'])){
+                                $count= count($_SESSION['product_List']);
+                            }
+                            ?>
 
                             <h5 class="mb-4">Giỏ Hàng(<span><?php echo $count ?></span> Sản Phẩm)</h5>
+                            <div class="cart-List">
                             <?php  foreach ($cart_List as $product){ ?>
 
                                 <hr class="mb-4">
@@ -80,18 +94,15 @@
                                 <?php
                             }
                             ?>
-                            <p class="text-primary mb-0"><i class="fas fa-info-circle mr-1"></i> Do not delay the purchase, adding
-                                items to your cart does not mean booking them.</p>
+                            </div>
+                            <p class="text-primary mb-0"><i class="fas fa-info-circle mr-1"></i> Đừng trì hoãn việc mua hàng, thêm các mặt hàng vào giỏ hàng của bạn không có nghĩa là đặt trước chúng.</p>
 
                         </div>
                     </div>
-                    <!-- Card -->
-
-                    <!-- Card -->
                     <div class="mb-3">
                         <div class="pt-4">
 
-                            <h5 class="mb-4">Expected shipping delivery</h5>
+                            <h5 class="mb-4">Giao hàng ước tính</h5>
 
                             <p class="mb-0"> Thu., 12.03. - Mon., 16.03.</p>
                         </div>
@@ -101,9 +112,7 @@
                     <!-- Card -->
                     <div class="mb-3">
                         <div class="pt-4">
-
-                            <h5 class="mb-4">We accept</h5>
-
+                            <h5 class="mb-4">Các Phương Thức Thanh Toán Hỗ Trợ</h5>
                             <img class="mr-2" width="45px"
                                  src="https://mdbootstrap.com/wp-content/plugins/woocommerce-gateway-stripe/assets/images/visa.svg"
                                  alt="Visa">
@@ -118,20 +127,13 @@
                                  alt="PayPal acceptance mark">
                         </div>
                     </div>
-                    <!-- Card -->
-
                 </div>
-                <!--Grid column-->
 
-                <!--Grid column-->
-                <div class="col-lg-4">
-
-                    <!-- Card -->
-                    <div class="mb-3 ">
+                <div class="col-lg-4  ">
+                    <div class="sticky">
+                    <div class="mb-3 sticky-top ">
                         <div class="pt-4 ">
-
                             <h5 class="mb-3">The total amount of</h5>
-
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
                                     Số Tiền Tạm Thời
@@ -156,32 +158,22 @@
 
                         </div>
                     </div>
-                    <!-- Card -->
-
-                    <!-- Card -->
-
-                    <!-- Card -->
-
                 </div>
-                <!--Grid column-->
-
+                </div>
             </div>
-            <!-- Grid row -->
-
         </section>
-        <!--Section: Block Content-->
-
-
-
-
-
-
-
     </main>
+
 
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap4.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js" integrity="sha512-2rNj2KJ+D8s1ceNasTIex6z4HWyOnEYLVC3FigGOmyQCZc2eBXKgOxQmo3oKLHyfcj53uz4QMsRCWNbLd32Q1g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="libs/bootstrap-5.0.1-dist/js/bootstrap.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap4.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
 </body>
 </html>
 
