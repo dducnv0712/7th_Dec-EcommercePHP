@@ -1,5 +1,6 @@
 <?php
 include_once "Database_.php";
+
 class WebControllers{
     public function home(){
         $sql_txt = "select * from list_product";
@@ -61,10 +62,10 @@ class WebControllers{
 
     }
     public function cartProduct(){
+        session_start();
 
         //danh sách sản phẩm trong giỏ hàng
-        session_start();
-        $cart = $_GET['cart'];
+        $cart = $_GET['cart_pr'];
         $sql_txt = "select * from list_product where id = '$cart'";
         $cart_product = queryDB($sql_txt);
         if(count($cart_product)==0) header("Location: ?route=cartListPro");
@@ -74,12 +75,18 @@ class WebControllers{
             $cart_List = $_SESSION["product_List"];
 
         }
-
         $cart_List[] = $product;
         $_SESSION["product_List"] = $cart_List;
         header("Location: ?route=cartListPro");
 
         }
+        public function deleteCartList(){
+        session_start();
+        session_unset();
+
+            header("Location: ?route=cartListPro");
+        }
+
 
 
         public function cartListProduct(){
@@ -89,12 +96,11 @@ class WebControllers{
             $cart_List = $_SESSION["product_List"];
         }
             include "views/component/Navbar.php";
-            include "views/Home.php";
             include "views/cartListProduct.php";
             include "views/component/Footer.php";
 
-
         }
+
     public function productStorage(){
         //thêm sản phẩm mới vào danh sách
         $id = $_POST['id-product'];
@@ -111,10 +117,5 @@ class WebControllers{
         } else {
             echo "<script>alert('Thêm thất bại')</script>";        }
     }
-    public function categoryList(){
-        $sql_txt = "select * from list_product where category ='Laptop'";
-        $list_product = queryDB($sql_txt);
-        include "views/categoryList.php";
 
-    }
 }

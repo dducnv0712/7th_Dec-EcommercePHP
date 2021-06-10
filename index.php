@@ -9,7 +9,7 @@ switch ($route){
     case "updatePro": $controller->updateProduct();break;//cap nhat thong tin san pham
     case "deletePro": $controller->deleteProduct();break;//xoa san pham
     case "proDetails": $controller->productDetails();break;//thong tin chi tiet san pham
-    case "category" : $controller->categoryList();break;//thong tin chi tiet san pham
+    case "deleteCart": $controller->deleteCartList();break;//luu tru gio hang
     case "cartPro": $controller->cartProduct();break;//luu tru gio hang
     case "cartListPro": $controller->cartListProduct();break;//hien thi gio hang
 

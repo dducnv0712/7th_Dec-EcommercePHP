@@ -41,8 +41,10 @@ if(isset($_SESSION['product_List'])){
                                 $count= count($_SESSION['product_List']);
                             }
                             ?>
-
+                            <div class="d-flex justify-content-between">
                             <h5 class="mb-4">Giỏ Hàng(<span><?php echo $count ?></span> Sản Phẩm)</h5>
+                                <a class="btn " href="?route=deleteCart"><i class="fas text-danger mx-2 fa-trash"></i>Xoa Gio Hang</a>
+                            </div>
                             <div class="cart-List">
                             <?php  foreach ($cart_List as $product){ ?>
 
@@ -60,18 +62,18 @@ if(isset($_SESSION['product_List'])){
                                             <div class="d-flex justify-content-between">
                                                 <div>
                                                     <h5 class="product-name"> <?php echo $product['name']  ?></h5>
-                                                    <p class="mb-3 text-muted text-uppercase small">Shirt - red</p>
-                                                    <p class="mb-2 text-muted text-uppercase small">Color: red</p>
+                                                    <p class="mb-3 text-muted text-uppercase small"><?php echo $product['category']  ?></p>
+                                                    <p class="mb-2 text-muted text-uppercase small">Giá : <?php echo number_format($product['price'] ,0,",",'.')."VNĐ" ?></p>
                                                     <p class="mb-3 text-muted text-uppercase small">Size: M</p>
                                                 </div>
                                                 <div>
                                                     <div class="def-number-input number-input safari_only mb-0 w-100">
 
                                                         <div class="input-group mb-3">
-                                                            <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
+                                                            <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
                                                                     class="minus btn  btn-primary"><i class="fas fa-minus"></i></button>
-                                                            <input type="number" min="0" value="1" class="form-control" style="width:50px" aria-label="Text input with 2 dropdown buttons">
-                                                            <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
+                                                            <input name="qty" type="number" min="0" value="1" class="form-control" style="width:50px" aria-label="Text input with 2 dropdown buttons">
+                                                            <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
                                                                     class="plus btn btn-primary"><i class="fas fa-plus"></i></button>
                                                         </div>
                                                     </div>
@@ -79,21 +81,18 @@ if(isset($_SESSION['product_List'])){
                                             </div>
                                             <div class="d-flex justify-content-between align-items-center">
                                                 <div>
-                                                    <a href="#" type="button" class="card-link-secondary small text-uppercase mr-3"><i
-                                                            class="fas fa-trash-alt mr-1"></i> Remove item </a>
-                                                    <a href="#" type="button" class="card-link-secondary small text-uppercase"><i
-                                                            class="fas fa-heart mr-1"></i> Move to wish list </a>
+                                                    <a href="?route=deleteCart&delete_cart=<?php echo $product['id'] ?>" type="button" class="btn small"><i
+                                                            class="fas text-danger fa-trash-alt mr-1"></i> Remove item </a>
+
                                                 </div>
                                                 <?php $total += $product['price'] ?>
-                                                <p class="mb-0"><span><strong><?php echo  number_format($product["price"],0,",",'.')." VNĐ" ?></strong></span></p class="mb-0">
+                                                <p class="mb-0"><span><strong>Giá Mới: <?php echo  number_format($product["price"],0,",",'.')." VNĐ" ?></strong></span></p class="mb-0">
                                             </div>
                                         </div>
                                     </div>
                                 </div>
 
-                                <?php
-                            }
-                            ?>
+                                <?php } ?>
                             </div>
                             <p class="text-primary mb-0"><i class="fas fa-info-circle mr-1"></i> Đừng trì hoãn việc mua hàng, thêm các mặt hàng vào giỏ hàng của bạn không có nghĩa là đặt trước chúng.</p>
 

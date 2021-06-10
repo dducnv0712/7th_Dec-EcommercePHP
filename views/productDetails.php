@@ -6,12 +6,12 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Chi Tiết Sản Phẩm</title>
+    <link rel="stylesheet" href="../../7th_Decemb/views/css/productDetails.css">
     <link rel="stylesheet" href="../../7th_Decemb/views/libs/bootstrap-5.0.1-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="../../7th_Decemb/views/libs/fontawesome5.15.1/css/all.min.css">
 <!--    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">-->
 </head>
 <body>
-
 
 <div class="container-xl">
     <h2 class="mt-5">Chi Tiết Sản Phẩm</h2>
@@ -82,23 +82,12 @@
                         <tbody>
                         <tr>
                             <td class="pl-0 pb-0 w-25">
-                                <label for="qty">Số Lượng</label>
                             </td>
                         </tr>
                         <tr>
                             <td class="pl-0">
-                                <div class="def-number-input number-input safari_only mb-0">
-                                    <div class="input-group mb-3">
-                                        <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
-                                                class="minus btn  btn-primary"><i class="fas fa-minus"></i></button>
-                                        <input type="number" min="0" value="1" class="form-control qtyProduct" aria-label="Text input with 2 dropdown buttons">
-                                        <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
-                                                class="plus btn btn-primary"><i class="fas fa-plus"></i></button>
-                                    </div>
-                                </div>
-                                <button type="button" class="btn btn-primary btn-md mr-1 mt-3 mb-2">Buy now</button>
-                                <a href="?route=cartPro&cart=<?php echo $product['id']?>"  class="btn mt-3 btn-light btn-md mr-1 mb-2">Add</a>
-
+                                <button type="button" class="btn btn-primary btn-md mx-3 mr-1 mt-3 mb-2">Mua Ngay</button>
+                                <a href="?route=cartPro&cart_pr=<?php echo $product['id']?>"  class="btn mt-3 btn-light mx-3 btn-md mr-1 mb-2">Thêm Giỏ Hàng</a>
                             </td>
                         </tr>
                         </tbody>
@@ -272,9 +261,13 @@
         </div>
 
     </div>
-
-
-
+    <?php
+    include "../../7th_Decemb/controllers/Database_.php";
+    $category = $product['category'];
+    $sql_txt = "select * from list_product where category ='$category' ORDER BY RAND() limit 4";
+    $list_product = queryDB($sql_txt);
+    ?>
+    <h2 class="mt-5">Các Sản Phẩm <?php echo $product['category'] ?> Khác</h2>
 
     <!--Section: Block Content-->
 </div>

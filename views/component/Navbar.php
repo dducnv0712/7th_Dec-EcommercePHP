@@ -69,8 +69,8 @@ if(isset($_SESSION['product_List'])){
             </div>
         </div>
     </div>
-    <div class="px-3 py-2 border-bottom mb-3 d-flex  align-items-center" >
-        <div class="container d-flex flex-wrap justify-content-center">
+    <div class="px-3 py-2 border-bottom sticky-top  mb-3 d-flex  align-items-center" style=" z-index: 99999 ;position: sticky" >
+        <div  class="container  d-flex flex-wrap justify-content-center">
             <form class="col-12 col-lg-auto mb-2 mb-lg-0 me-lg-auto">
                 <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
             </form>
